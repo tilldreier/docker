@@ -29,8 +29,8 @@ RUN apt-get install -y nodejs
 RUN npm install npm@latest -g
 
 # Install SAP SDK & mbt
-npm i -g @sap/cds-dk
-npm i -g mbt
+RUN npm i -g @sap/cds-dk
+RUN npm i -g mbt
 
 # Run cleanup
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
