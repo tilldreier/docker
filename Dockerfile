@@ -18,8 +18,8 @@ RUN echo "alias cf='cf7'" >> ~/.bashrc
 RUN echo -e '#!/bin/bash\ncf7 "$@"' > /usr/bin/cf && chmod +x /usr/bin/cf
 
 # Install community repository and MTA plugin
-RUN cf7 add-plugin-repo CF-Community https://plugins.cloudfoundry.org
-RUN cf7 install-plugin multiapps -f
+# RUN cf7 add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+# RUN cf7 install-plugin multiapps -f
 
 # Install NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
