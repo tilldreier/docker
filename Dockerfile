@@ -9,13 +9,15 @@ RUN apt-get update && apt-get install -y wget gnupg2 curl chromium-browser build
 ENV CHROME_BIN /usr/bin/chromium-browser
 
 # Install Cloud Foundry CLI
-RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
-RUN echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-RUN apt-get update && apt-get install -y cf7-cli
+RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+RUN echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+
+RUN sudo apt-get update
+RUN sudo apt-get install cf7-cli
 
 # Setup alias for CF7 command
-RUN echo "alias cf='cf7'" >> ~/.bashrc
-RUN echo -e '#!/bin/bash\ncf7 "$@"' > /usr/bin/cf && chmod +x /usr/bin/cf
+# RUN echo "alias cf='cf7'" >> ~/.bashrc
+# RUN echo -e '#!/bin/bash\ncf7 "$@"' > /usr/bin/cf && chmod +x /usr/bin/cf
 
 # Install community repository and MTA plugin
 # RUN cf7 add-plugin-repo CF-Community https://plugins.cloudfoundry.org
